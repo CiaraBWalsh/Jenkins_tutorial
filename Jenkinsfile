@@ -23,8 +23,8 @@ ls -lah'''
     stage('Deploy') {
       steps {
         echo 'Deploying..'
-        retry(count: 3) {
-          sh './flakey-deploy.sh'
+        timeout(time: 1, unit: 'MINUTES') {
+          sh './health-check.sh'
         }
 
       }
