@@ -23,6 +23,10 @@ ls -lah'''
     stage('Deploy') {
       steps {
         echo 'Deploying..'
+        retry(count: 3) {
+          sh './flakey-deploy.sh'
+        }
+
       }
     }
   }
